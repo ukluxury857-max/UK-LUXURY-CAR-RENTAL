@@ -1,0 +1,2092 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UK LUXURY | Luxury Car Rental Kolkata</title>
+
+<meta name="description" content="UK LUXURY - Premium luxury car rental in Kolkata for weddings, photoshoots and special occasions.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   UK LUXURY
+   PREMIUM AUTOMOTIVE WEBSITE
+========================================================= */
+
+:root{
+    --black:#070707;
+    --black2:#0d0d0d;
+    --black3:#141414;
+    --white:#f4f2ed;
+    --muted:#9c9c9c;
+    --gold:#c8a96b;
+    --gold-light:#e2c88d;
+    --border:rgba(255,255,255,0.10);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:var(--white);
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+.cursor{
+    width:12px;
+    height:12px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%);
+    transition:
+        width .25s ease,
+        height .25s ease,
+        background .25s ease;
+    display:none;
+}
+
+@media(min-width:900px){
+    .cursor{
+        display:block;
+    }
+}
+
+.cursor.active{
+    width:55px;
+    height:55px;
+    background:rgba(200,169,107,.08);
+}
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:#050505;
+    z-index:10000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:opacity 1s ease, visibility 1s ease;
+}
+
+.loader.hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-logo{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(38px,7vw,90px);
+    letter-spacing:.12em;
+}
+
+.loader-line{
+    width:0;
+    height:1px;
+    background:var(--gold);
+    margin-top:22px;
+    animation:loaderLine 1.5s ease forwards;
+}
+
+@keyframes loaderLine{
+    to{
+        width:180px;
+    }
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:85px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    z-index:1000;
+    transition:.5s ease;
+}
+
+nav.scrolled{
+    background:rgba(5,5,5,.88);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
+}
+
+.logo{
+    color:white;
+    text-decoration:none;
+    font-family:"Playfair Display",serif;
+    font-size:25px;
+    letter-spacing:.16em;
+}
+
+.logo span{
+    color:var(--gold);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:38px;
+}
+
+.nav-links a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--gold);
+}
+
+.nav-call{
+    border:1px solid rgba(200,169,107,.5);
+    padding:12px 19px;
+    color:var(--gold)!important;
+}
+
+.menu{
+    display:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 75% 45%,rgba(200,169,107,.10),transparent 28%),
+        linear-gradient(120deg,#050505 20%,#111 100%);
+}
+
+.hero-bg{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(90deg,
+        rgba(5,5,5,1) 0%,
+        rgba(5,5,5,.92) 35%,
+        rgba(5,5,5,.35) 72%,
+        rgba(5,5,5,.75) 100%);
+    z-index:1;
+}
+
+/* Replace this area later with your hero car image */
+
+.hero-car-placeholder{
+    position:absolute;
+    right:-5%;
+    bottom:-8%;
+    width:67%;
+    height:75%;
+    opacity:.23;
+    background:
+        radial-gradient(ellipse at center,
+        rgba(210,210,210,.35),
+        transparent 55%);
+    filter:blur(1px);
+}
+
+.hero-content{
+    position:relative;
+    z-index:3;
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+    padding-top:80px;
+}
+
+.hero-small{
+    color:var(--gold);
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:.38em;
+    margin-bottom:25px;
+    opacity:0;
+    animation:fadeUp 1s 1.6s forwards;
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:clamp(65px,10vw,150px);
+    line-height:.85;
+    letter-spacing:-.04em;
+    max-width:1000px;
+    opacity:0;
+    animation:fadeUp 1s 1.8s forwards;
+}
+
+.hero h1 span{
+    color:var(--gold);
+    font-style:italic;
+}
+
+.hero-description{
+    margin-top:35px;
+    max-width:490px;
+    color:#aaa;
+    line-height:1.8;
+    font-size:15px;
+    opacity:0;
+    animation:fadeUp 1s 2s forwards;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:42px;
+    opacity:0;
+    animation:fadeUp 1s 2.2s forwards;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:170px;
+    padding:16px 25px;
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    font-size:11px;
+    transition:.4s;
+}
+
+.btn-gold{
+    background:var(--gold);
+    color:#080808;
+}
+
+.btn-gold:hover{
+    background:var(--gold-light);
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,.25);
+    color:white;
+}
+
+.btn-outline:hover{
+    border-color:var(--gold);
+    color:var(--gold);
+    transform:translateY(-3px);
+}
+
+.scroll{
+    position:absolute;
+    bottom:35px;
+    left:5%;
+    z-index:4;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:#777;
+    font-size:9px;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+}
+
+.scroll-line{
+    width:55px;
+    height:1px;
+    background:#555;
+    position:relative;
+    overflow:hidden;
+}
+
+.scroll-line:after{
+    content:"";
+    position:absolute;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:var(--gold);
+    animation:scrollLine 2s infinite;
+}
+
+@keyframes scrollLine{
+    to{
+        left:100%;
+    }
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.section{
+    padding:150px 5%;
+    position:relative;
+}
+
+.intro{
+    background:var(--black);
+}
+
+.intro-grid{
+    display:grid;
+    grid-template-columns:1fr 1.5fr;
+    gap:80px;
+    max-width:1300px;
+    margin:auto;
+}
+
+.section-label{
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+}
+
+.intro-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(42px,6vw,85px);
+    font-weight:400;
+    line-height:1;
+}
+
+.intro-title em{
+    color:var(--gold);
+}
+
+.intro-text{
+    color:#999;
+    font-size:17px;
+    line-height:1.9;
+    max-width:650px;
+}
+
+.intro-text strong{
+    color:#eee;
+    font-weight:400;
+}
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee{
+    overflow:hidden;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:24px 0;
+    white-space:nowrap;
+    background:#090909;
+}
+
+.marquee-track{
+    display:inline-block;
+    animation:marquee 25s linear infinite;
+}
+
+.marquee span{
+    font-family:"Playfair Display",serif;
+    font-size:27px;
+    margin-right:45px;
+    color:#aaa;
+}
+
+.marquee span.gold{
+    color:var(--gold);
+}
+
+@keyframes marquee{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* =========================================================
+   FLEET
+========================================================= */
+
+.fleet{
+    background:#0b0b0b;
+}
+
+.fleet-header{
+    max-width:1300px;
+    margin:0 auto 75px;
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+}
+
+.fleet-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(45px,7vw,90px);
+    font-weight:400;
+    line-height:.9;
+    margin-top:18px;
+}
+
+.fleet-sub{
+    max-width:300px;
+    color:#888;
+    line-height:1.7;
+    font-size:13px;
+}
+
+.cars{
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
+.car{
+    position:relative;
+    min-height:520px;
+    background:#121212;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.06);
+    transition:.6s ease;
+}
+
+.car:hover{
+    transform:translateY(-8px);
+    border-color:rgba(200,169,107,.35);
+}
+
+.car-image{
+    position:absolute;
+    inset:0;
+    height:100%;
+    background:
+        linear-gradient(180deg,
+        transparent 35%,
+        rgba(0,0,0,.9) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+/*
+=========================================================
+CAR IMAGE PLACEHOLDER
+
+When you have a car image:
+
+1. Upload it to your GitHub repository.
+2. Replace the background line below with:
+
+background-image:url('car1.jpg');
+
+Do this for each vehicle.
+=========================================================
+*/
+
+.car-image:before{
+    content:"YOUR CAR PHOTO";
+    color:rgba(255,255,255,.08);
+    font-size:12px;
+    letter-spacing:.35em;
+}
+
+.car-number{
+    position:absolute;
+    top:25px;
+    left:27px;
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:.2em;
+}
+
+.car-content{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:35px;
+    z-index:2;
+}
+
+.car-category{
+    font-size:9px;
+    text-transform:uppercase;
+    color:var(--gold);
+    letter-spacing:.3em;
+    margin-bottom:10px;
+}
+
+.car h3{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.car-info{
+    display:flex;
+    gap:25px;
+    color:#888;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    margin-bottom:25px;
+}
+
+.car-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.car-btn{
+    text-decoration:none;
+    color:#eee;
+    border:1px solid rgba(255,255,255,.2);
+    padding:12px 15px;
+    font-size:9px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+.car-btn:hover{
+    border-color:var(--gold);
+    color:var(--gold);
+}
+
+.book-btn{
+    background:var(--gold);
+    color:#080808;
+    border-color:var(--gold);
+}
+
+.book-btn:hover{
+    background:var(--gold-light);
+    color:#080808;
+}
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.experience{
+    background:#050505;
+}
+
+.experience-header{
+    max-width:1300px;
+    margin:auto;
+}
+
+.experience-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(45px,7vw,90px);
+    font-weight:400;
+    margin-top:20px;
+}
+
+.experiences{
+    max-width:1300px;
+    margin:80px auto 0;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--border);
+}
+
+.experience-card{
+    padding:45px 25px;
+    border-right:1px solid var(--border);
+    transition:.4s;
+}
+
+.experience-card:last-child{
+    border-right:none;
+}
+
+.experience-card:hover{
+    background:#101010;
+}
+
+.experience-number{
+    color:var(--gold);
+    font-size:11px;
+}
+
+.experience-card h3{
+    font-family:"Playfair Display",serif;
+    font-size:27px;
+    font-weight:400;
+    margin:60px 0 18px;
+}
+
+.experience-card p{
+    color:#777;
+    line-height:1.8;
+    font-size:13px;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+    background:#0c0c0c;
+}
+
+.about-grid{
+    max-width:1300px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:100px;
+    align-items:center;
+}
+
+.about-title{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:clamp(45px,6vw,80px);
+    line-height:.95;
+    margin-top:20px;
+}
+
+.about-title span{
+    color:var(--gold);
+}
+
+.about-text{
+    color:#999;
+    line-height:1.9;
+    font-size:15px;
+}
+
+.about-text p{
+    margin-bottom:22px;
+}
+
+.about-year{
+    margin-top:50px;
+    border-top:1px solid var(--border);
+    padding-top:25px;
+    display:flex;
+    justify-content:space-between;
+    color:#777;
+    font-size:11px;
+    letter-spacing:.15em;
+}
+
+.about-year strong{
+    color:var(--gold);
+    font-size:25px;
+    font-family:"Playfair Display",serif;
+}
+
+/* =========================================================
+   BOOKING CTA
+========================================================= */
+
+.booking{
+    padding:170px 5%;
+    text-align:center;
+    background:
+        radial-gradient(circle at center,
+        rgba(200,169,107,.09),
+        transparent 45%),
+        #070707;
+}
+
+.booking .section-label{
+    display:block;
+}
+
+.booking h2{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:clamp(50px,9vw,125px);
+    line-height:.85;
+    margin:25px auto 35px;
+    max-width:1100px;
+}
+
+.booking h2 em{
+    color:var(--gold);
+}
+
+.booking p{
+    color:#888;
+    max-width:500px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.booking-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+    background:#0d0d0d;
+    padding-bottom:100px;
+}
+
+.contact-grid{
+    max-width:1300px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:100px;
+}
+
+.contact-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(45px,6vw,80px);
+    font-weight:400;
+    line-height:.95;
+    margin-top:20px;
+}
+
+.contact-title span{
+    color:var(--gold);
+}
+
+.contact-info{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+}
+
+.contact-item{
+    padding:25px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.contact-item small{
+    color:var(--gold);
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.25em;
+}
+
+.contact-item a,
+.contact-item p{
+    display:block;
+    color:#ddd;
+    text-decoration:none;
+    font-size:18px;
+    margin-top:8px;
+    transition:.3s;
+}
+
+.contact-item a:hover{
+    color:var(--gold);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:40px 5%;
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#555;
+    font-size:10px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+}
+
+.footer-logo{
+    font-family:"Playfair Display",serif;
+    color:#ddd;
+    font-size:20px;
+    letter-spacing:.15em;
+}
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:850px){
+
+    nav{
+        height:70px;
+        padding:0 6%;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:#090909;
+        flex-direction:column;
+        gap:0;
+        padding:10px 6% 25px;
+        display:none;
+        border-bottom:1px solid var(--border);
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .nav-links a{
+        width:100%;
+        padding:17px 0;
+        border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-call{
+        border:none;
+        padding:17px 0;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero{
+        min-height:100svh;
+    }
+
+    .hero-content{
+        padding-top:90px;
+    }
+
+    .hero h1{
+        font-size:17vw;
+    }
+
+    .hero-description{
+        font-size:13px;
+        max-width:330px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        width:220px;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .hero-car-placeholder{
+        width:100%;
+        right:-25%;
+        opacity:.18;
+    }
+
+    .section{
+        padding:95px 6%;
+    }
+
+    .intro-grid{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .fleet-header{
+        display:block;
+    }
+
+    .fleet-sub{
+        margin-top:25px;
+    }
+
+    .cars{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .car{
+        min-height:470px;
+    }
+
+    .car h3{
+        font-size:34px;
+    }
+
+    .experiences{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .experience-card{
+        border-bottom:1px solid var(--border);
+    }
+
+    .experience-card:nth-child(2){
+        border-right:none;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:50px;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+        gap:50px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .hero h1{
+        font-size:18vw;
+    }
+
+    .hero-small{
+        font-size:9px;
+    }
+
+    .booking h2{
+        font-size:17vw;
+    }
+
+    .experiences{
+        grid-template-columns:1fr;
+    }
+
+    .experience-card{
+        border-right:none;
+    }
+
+    .car{
+        min-height:500px;
+    }
+
+    .car-content{
+        padding:25px;
+    }
+
+    .car-info{
+        gap:12px;
+        flex-wrap:wrap;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     LOADER
+===================================================== -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-logo">UK LUXURY</div>
+
+    <div class="loader-line"></div>
+
+</div>
+
+
+<!-- =====================================================
+     CUSTOM CURSOR
+===================================================== -->
+
+<div class="cursor" id="cursor"></div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav id="navbar">
+
+    <a href="#home" class="logo">
+        UK <span>LUXURY</span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+
+        <a href="#home">Home</a>
+
+        <a href="#fleet">Fleet</a>
+
+        <a href="#experience">Experience</a>
+
+        <a href="#about">About</a>
+
+        <a href="#contact">Contact</a>
+
+        <a href="tel:+919674518240" class="nav-call">
+            Call Now
+        </a>
+
+    </div>
+
+    <div class="menu" id="menu">
+        ☰
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-bg"></div>
+
+    <!-- Future hero car image area -->
+    <div class="hero-car-placeholder"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            Luxury Car Rental · Kolkata · Since 2024
+        </div>
+
+        <h1>
+            ARRIVE<br>
+            IN <span>LUXURY.</span>
+        </h1>
+
+        <p class="hero-description">
+            Premium luxury vehicles for weddings, photoshoots,
+            celebrations and unforgettable moments across Kolkata.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#fleet" class="btn btn-gold">
+                Explore Fleet
+            </a>
+
+            <a href="tel:+919674518240" class="btn btn-outline">
+                Book Now
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="scroll">
+
+        <div class="scroll-line"></div>
+
+        Scroll to explore
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="section intro">
+
+    <div class="intro-grid">
+
+        <div class="reveal">
+
+            <div class="section-label">
+                The Experience
+            </div>
+
+        </div>
+
+        <div class="reveal">
+
+            <h2 class="intro-title">
+                MORE THAN<br>
+                A <em>RENTAL.</em>
+            </h2>
+
+            <p class="intro-text" style="margin-top:35px;">
+
+                UK LUXURY is a premium car rental company based in
+                Garden Reach, Kolkata, created for people who want
+                their arrival to be as memorable as the occasion itself.
+
+                <br><br>
+
+                From weddings and photoshoots to special celebrations,
+                our luxury vehicles are selected to bring presence,
+                elegance and character to every moment.
+
+                <br><br>
+
+                <strong>
+                    Your occasion deserves more than an ordinary car.
+                </strong>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>UK LUXURY</span>
+        <span class="gold">WEDDINGS</span>
+        <span>PHOTOSHOOTS</span>
+        <span class="gold">SPECIAL OCCASIONS</span>
+        <span>PREMIUM EXPERIENCE</span>
+
+        <span>UK LUXURY</span>
+        <span class="gold">WEDDINGS</span>
+        <span>PHOTOSHOOTS</span>
+        <span class="gold">SPECIAL OCCASIONS</span>
+        <span>PREMIUM EXPERIENCE</span>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FLEET
+===================================================== -->
+
+<section class="section fleet" id="fleet">
+
+    <div class="fleet-header reveal">
+
+        <div>
+
+            <div class="section-label">
+                The Collection
+            </div>
+
+            <h2 class="fleet-title">
+                OUR<br>
+                FLEET
+            </h2>
+
+        </div>
+
+        <p class="fleet-sub">
+
+            A collection of luxury vehicles available
+            across Kolkata for your most important moments.
+
+        </p>
+
+    </div>
+
+
+    <div class="cars">
+
+
+        <!-- =================================================
+             CAR 01
+        ================================================== -->
+
+        <article class="car reveal">
+
+            <div class="car-image">
+
+                <div class="car-number">
+                    01 / UK LUXURY
+                </div>
+
+            </div>
+
+            <div class="car-content">
+
+                <div class="car-category">
+                    Luxury Collection
+                </div>
+
+                <h3>
+                    YOUR CAR
+                </h3>
+
+                <div class="car-info">
+
+                    <span>
+                        Premium
+                    </span>
+
+                    <span>
+                        Kolkata
+                    </span>
+
+                    <span>
+                        10 HRS / 100 KM
+                    </span>
+
+                </div>
+
+                <div class="car-buttons">
+
+                    <!-- BOOK NOW CALLS NUMBER -->
+                    <a href="tel:+919674518240"
+                       class="car-btn book-btn">
+                        Book Now
+                    </a>
+
+                    <a href="https://wa.me/919674518240"
+                       target="_blank"
+                       class="car-btn">
+                        WhatsApp
+                    </a>
+
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw"
+                       target="_blank"
+                       class="car-btn">
+                        Instagram
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             CAR 02
+        ================================================== -->
+
+        <article class="car reveal">
+
+            <div class="car-image">
+
+                <div class="car-number">
+                    02 / UK LUXURY
+                </div>
+
+            </div>
+
+            <div class="car-content">
+
+                <div class="car-category">
+                    Luxury Collection
+                </div>
+
+                <h3>
+                    YOUR CAR
+                </h3>
+
+                <div class="car-info">
+
+                    <span>
+                        Premium
+                    </span>
+
+                    <span>
+                        Kolkata
+                    </span>
+
+                    <span>
+                        10 HRS / 100 KM
+                    </span>
+
+                </div>
+
+                <div class="car-buttons">
+
+                    <a href="tel:+919674518240"
+                       class="car-btn book-btn">
+                        Book Now
+                    </a>
+
+                    <a href="https://wa.me/919674518240"
+                       target="_blank"
+                       class="car-btn">
+                        WhatsApp
+                    </a>
+
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw"
+                       target="_blank"
+                       class="car-btn">
+                        Instagram
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             CAR 03
+        ================================================== -->
+
+        <article class="car reveal">
+
+            <div class="car-image">
+
+                <div class="car-number">
+                    03 / UK LUXURY
+                </div>
+
+            </div>
+
+            <div class="car-content">
+
+                <div class="car-category">
+                    Luxury Collection
+                </div>
+
+                <h3>
+                    YOUR CAR
+                </h3>
+
+                <div class="car-info">
+
+                    <span>
+                        Premium
+                    </span>
+
+                    <span>
+                        Kolkata
+                    </span>
+
+                    <span>
+                        10 HRS / 100 KM
+                    </span>
+
+                </div>
+
+                <div class="car-buttons">
+
+                    <a href="tel:+919674518240"
+                       class="car-btn book-btn">
+                        Book Now
+                    </a>
+
+                    <a href="https://wa.me/919674518240"
+                       target="_blank"
+                       class="car-btn">
+                        WhatsApp
+                    </a>
+
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw"
+                       target="_blank"
+                       class="car-btn">
+                        Instagram
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             CAR 04
+        ================================================== -->
+
+        <article class="car reveal">
+
+            <div class="car-image">
+
+                <div class="car-number">
+                    04 / UK LUXURY
+                </div>
+
+            </div>
+
+            <div class="car-content">
+
+                <div class="car-category">
+                    Luxury Collection
+                </div>
+
+                <h3>
+                    YOUR CAR
+                </h3>
+
+                <div class="car-info">
+
+                    <span>
+                        Premium
+                    </span>
+
+                    <span>
+                        Kolkata
+                    </span>
+
+                    <span>
+                        10 HRS / 100 KM
+                    </span>
+
+                </div>
+
+                <div class="car-buttons">
+
+                    <a href="tel:+919674518240"
+                       class="car-btn book-btn">
+                        Book Now
+                    </a>
+
+                    <a href="https://wa.me/919674518240"
+                       target="_blank"
+                       class="car-btn">
+                        WhatsApp
+                    </a>
+
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw"
+                       target="_blank"
+                       class="car-btn">
+                        Instagram
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EXPERIENCE
+===================================================== -->
+
+<section class="section experience" id="experience">
+
+    <div class="experience-header reveal">
+
+        <div class="section-label">
+            Made For Moments
+        </div>
+
+        <h2 class="experience-title">
+            YOUR MOMENT.<br>
+            <span style="color:var(--gold);">
+                YOUR ARRIVAL.
+            </span>
+        </h2>
+
+    </div>
+
+
+    <div class="experiences">
+
+
+        <div class="experience-card reveal">
+
+            <div class="experience-number">
+                01
+            </div>
+
+            <h3>
+                Weddings
+            </h3>
+
+            <p>
+                Make your entrance unforgettable with
+                a luxury vehicle that matches the importance
+                of your special day.
+            </p>
+
+        </div>
+
+
+        <div class="experience-card reveal">
+
+            <div class="experience-number">
+                02
+            </div>
+
+            <h3>
+                Photoshoots
+            </h3>
+
+            <p>
+                Add presence, style and character to
+                your pre-wedding, fashion or creative
+                photoshoot.
+            </p>
+
+        </div>
+
+
+        <div class="experience-card reveal">
+
+            <div class="experience-number">
+                03
+            </div>
+
+            <h3>
+                Celebrations
+            </h3>
+
+            <p>
+                Birthdays, anniversaries and special
+                occasions deserve an arrival worth
+                remembering.
+            </p>
+
+        </div>
+
+
+        <div class="experience-card reveal">
+
+            <div class="experience-number">
+                04
+            </div>
+
+            <h3>
+                Special Events
+            </h3>
+
+            <p>
+                Turn an ordinary arrival into a statement
+                with our premium collection of luxury cars.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="section about" id="about">
+
+    <div class="about-grid">
+
+
+        <div class="reveal">
+
+            <div class="section-label">
+                About UK LUXURY
+            </div>
+
+            <h2 class="about-title">
+
+                ELEGANCE<br>
+                <span>ON EVERY</span><br>
+                ARRIVAL.
+
+            </h2>
+
+        </div>
+
+
+        <div class="about-text reveal">
+
+            <p>
+                Established in <strong style="color:white;">
+                2024</strong>, UK LUXURY is a Kolkata-based
+                luxury car rental company dedicated to providing
+                premium vehicles for weddings, photoshoots and
+                special occasions.
+            </p>
+
+            <p>
+                Based in Garden Reach and serving clients
+                throughout Kolkata, we focus on making every
+                journey and every arrival feel exceptional.
+            </p>
+
+            <p>
+                Whether you're planning a wedding entrance,
+                creating the perfect photoshoot or simply
+                celebrating something important, UK LUXURY
+                brings the right vehicle to the occasion.
+            </p>
+
+
+            <div class="about-year">
+
+                <span>
+                    Established
+                </span>
+
+                <strong>
+                    2024
+                </strong>
+
+                <span>
+                    Garden Reach · Kolkata
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RENTAL INFORMATION
+===================================================== -->
+
+<section class="section" style="background:#070707;">
+
+    <div style="max-width:900px;margin:auto;text-align:center;" class="reveal">
+
+        <div class="section-label">
+            Rental Policy
+        </div>
+
+        <h2 style="
+            font-family:'Playfair Display',serif;
+            font-weight:400;
+            font-size:clamp(40px,6vw,70px);
+            margin:20px 0;
+        ">
+            10 HOURS OR<br>
+            <span style="color:var(--gold);">
+                100 KM
+            </span>
+        </h2>
+
+        <p style="
+            color:#888;
+            line-height:1.9;
+            max-width:650px;
+            margin:auto;
+        ">
+            Our standard rental period is
+            <strong style="color:#ddd;">
+            10 hours or 100 kilometres,
+            </strong>
+            garage to garage, whichever is higher.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BOOKING CTA
+===================================================== -->
+
+<section class="booking">
+
+    <div class="section-label">
+        Your Experience Awaits
+    </div>
+
+    <h2>
+        READY TO<br>
+        <em>ARRIVE DIFFERENT?</em>
+    </h2>
+
+    <p>
+        Speak directly with UK LUXURY and
+        reserve your vehicle for your special occasion.
+    </p>
+
+    <div class="booking-buttons">
+
+        <a href="tel:+919674518240"
+           class="btn btn-gold">
+            Call & Book
+        </a>
+
+        <a href="https://wa.me/919674518240"
+           target="_blank"
+           class="btn btn-outline">
+            WhatsApp
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="section contact" id="contact">
+
+    <div class="contact-grid">
+
+
+        <div class="reveal">
+
+            <div class="section-label">
+                Contact
+            </div>
+
+            <h2 class="contact-title">
+                LET'S MAKE<br>
+                YOUR <span>ARRIVAL</span><br>
+                SPECIAL.
+            </h2>
+
+        </div>
+
+
+        <div class="contact-info reveal">
+
+
+            <div class="contact-item">
+
+                <small>
+                    Call / Book
+                </small>
+
+                <a href="tel:+919674518240">
+                    +91 96745 18240
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <small>
+                    WhatsApp
+                </small>
+
+                <a href="https://wa.me/919674518240"
+                   target="_blank">
+                    Chat With UK LUXURY
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <small>
+                    Instagram
+                </small>
+
+                <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw"
+                   target="_blank">
+                    @uk_luxury_car_rental_kolkata
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <small>
+                    Location
+                </small>
+
+                <a href="https://maps.app.goo.gl/fMaxK5V1Dnd8Ee859"
+                   target="_blank">
+                    Garden Reach, Kolkata
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <small>
+                    Availability
+                </small>
+
+                <p>
+                    24 × 7
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        UK LUXURY
+    </div>
+
+    <div>
+        Luxury Car Rental · Kolkata
+    </div>
+
+    <div>
+        © 2024 UK LUXURY
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+window.addEventListener("load", function(){
+
+    setTimeout(function(){
+
+        document.getElementById("loader")
+        .classList.add("hidden");
+
+    }, 1500);
+
+});
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", function(){
+
+    if(window.scrollY > 50){
+
+        navbar.classList.add("scrolled");
+
+    }else{
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menu = document.getElementById("menu");
+const navLinks = document.getElementById("navLinks");
+
+menu.addEventListener("click", function(){
+
+    navLinks.classList.toggle("open");
+
+});
+
+
+document.querySelectorAll(".nav-links a").forEach(function(link){
+
+    link.addEventListener("click", function(){
+
+        navLinks.classList.remove("open");
+
+    });
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+
+    function(entries){
+
+        entries.forEach(function(entry){
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("visible");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:0.12
+    }
+
+);
+
+
+reveals.forEach(function(element){
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+const cursor = document.getElementById("cursor");
+
+document.addEventListener("mousemove", function(e){
+
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+
+});
+
+
+document.querySelectorAll("a, .car, .experience-card").forEach(function(element){
+
+    element.addEventListener("mouseenter", function(){
+
+        cursor.classList.add("active");
+
+    });
+
+    element.addEventListener("mouseleave", function(){
+
+        cursor.classList.remove("active");
+
+    });
+
+});
+
+
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
+
+const heroCar = document.querySelector(".hero-car-placeholder");
+
+window.addEventListener("scroll", function(){
+
+    if(heroCar){
+
+        const movement = window.scrollY * 0.12;
+
+        heroCar.style.transform =
+            "translateY(" + movement + "px)";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
+```
