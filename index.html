@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,6 +51,7 @@ img{
     max-width:100%;
     display:block;
 }
+
 
 /* LOADER */
 
@@ -119,6 +121,18 @@ img{
 }
 
 .nav-logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.nav-logo img{
+    width:52px;
+    height:52px;
+    object-fit:contain;
+}
+
+.nav-logo-text{
     font-family:'Playfair Display',serif;
     font-size:25px;
     letter-spacing:5px;
@@ -349,13 +363,14 @@ img{
     gap:22px;
 }
 
+
+/* EVERY CAR HAS EXACTLY THE SAME DISPLAY SIZE */
+
 .car-card{
     height:530px;
     position:relative;
     overflow:hidden;
-    background:
-        linear-gradient(180deg,transparent 25%,rgba(0,0,0,.95) 100%),
-        linear-gradient(135deg,#292929,#111);
+    background:#111;
     border:1px solid var(--border);
     transition:.5s ease;
 }
@@ -368,19 +383,33 @@ img{
 .car-image{
     position:absolute;
     inset:0;
-    background-size:cover;
-    background-position:center;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#111;
+}
+
+.car-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center center;
     transition:transform .8s ease;
 }
 
-.car-card:hover .car-image{
+.car-card:hover .car-image img{
     transform:scale(1.05);
 }
 
 .car-overlay{
     position:absolute;
     inset:0;
-    background:linear-gradient(transparent 35%,rgba(0,0,0,.95));
+    background:linear-gradient(
+        transparent 30%,
+        rgba(0,0,0,.15) 48%,
+        rgba(0,0,0,.95) 100%
+    );
+    z-index:1;
 }
 
 .car-content{
@@ -527,6 +556,53 @@ img{
     letter-spacing:2px;
     text-transform:uppercase;
     margin-top:5px;
+}
+
+
+/* CERTIFICATIONS */
+
+.certifications{
+    padding:100px 6%;
+    background:#0b0b0b;
+    border-top:1px solid var(--border);
+}
+
+.certification-inner{
+    max-width:1000px;
+    margin:auto;
+    text-align:center;
+}
+
+.certification-grid{
+    margin-top:45px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    flex-wrap:wrap;
+}
+
+.certification-card{
+    width:260px;
+    min-height:180px;
+    padding:20px;
+    border:1px solid var(--border);
+    background:#101010;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.4s ease;
+}
+
+.certification-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(200,169,107,.5);
+}
+
+.certification-card img{
+    width:100%;
+    height:140px;
+    object-fit:contain;
 }
 
 
@@ -765,6 +841,18 @@ footer{
 }
 
 .footer-logo{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.footer-logo img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+}
+
+.footer-logo-text{
     font-family:'Playfair Display',serif;
     letter-spacing:4px;
 }
@@ -824,6 +912,16 @@ footer{
     .navbar{
         height:72px;
         padding:0 5%;
+    }
+
+    .nav-logo img{
+        width:45px;
+        height:45px;
+    }
+
+    .nav-logo-text{
+        font-size:20px;
+        letter-spacing:3px;
     }
 
     .nav-links{
@@ -992,7 +1090,13 @@ footer{
 <nav class="navbar" id="navbar">
 
     <a href="#home" class="nav-logo">
-        UK LUXURY
+
+        <img src="logo.jpg" alt="UK LUXURY Logo">
+
+        <div class="nav-logo-text">
+            UK LUXURY
+        </div>
+
     </a>
 
     <div class="nav-links" id="navLinks">
@@ -1111,6 +1215,7 @@ footer{
     <div class="section-header reveal">
 
         <div>
+
             <div class="eyebrow">
                 The Collection
             </div>
@@ -1118,6 +1223,7 @@ footer{
             <h2>
                 Our Fleet
             </h2>
+
         </div>
 
         <p>
@@ -1135,32 +1241,27 @@ footer{
 
         <div class="car-card reveal">
 
-            <div class="car-image"></div>
+            <div class="car-image">
+                <img src="car 1.jpg" alt="Vintage Rolls Royce White">
+            </div>
+
             <div class="car-overlay"></div>
 
             <div class="car-content">
 
-                <div class="car-number">
-                    01
-                </div>
+                <div class="car-number">01</div>
 
                 <div class="car-name">
-                    YOUR CAR
+                    Vintage Rolls Royce White
                 </div>
 
                 <div class="car-actions">
 
-                    <a href="tel:+919674518240">
-                        Book Now
-                    </a>
+                    <a href="tel:+919674518240">Book Now</a>
 
-                    <a href="https://wa.me/919674518240" target="_blank">
-                        WhatsApp
-                    </a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
 
-                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">
-                        Instagram
-                    </a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
 
                 </div>
 
@@ -1173,32 +1274,27 @@ footer{
 
         <div class="car-card reveal">
 
-            <div class="car-image"></div>
+            <div class="car-image">
+                <img src="car 2.jpg" alt="Vintage White Gold 2">
+            </div>
+
             <div class="car-overlay"></div>
 
             <div class="car-content">
 
-                <div class="car-number">
-                    02
-                </div>
+                <div class="car-number">02</div>
 
                 <div class="car-name">
-                    YOUR CAR
+                    Vintage White Gold 2
                 </div>
 
                 <div class="car-actions">
 
-                    <a href="tel:+919674518240">
-                        Book Now
-                    </a>
+                    <a href="tel:+919674518240">Book Now</a>
 
-                    <a href="https://wa.me/919674518240" target="_blank">
-                        WhatsApp
-                    </a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
 
-                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">
-                        Instagram
-                    </a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
 
                 </div>
 
@@ -1211,32 +1307,27 @@ footer{
 
         <div class="car-card reveal">
 
-            <div class="car-image"></div>
+            <div class="car-image">
+                <img src="car 3.jpg" alt="Vintage Rolls Royce Red">
+            </div>
+
             <div class="car-overlay"></div>
 
             <div class="car-content">
 
-                <div class="car-number">
-                    03
-                </div>
+                <div class="car-number">03</div>
 
                 <div class="car-name">
-                    YOUR CAR
+                    Vintage Rolls Royce Red
                 </div>
 
                 <div class="car-actions">
 
-                    <a href="tel:+919674518240">
-                        Book Now
-                    </a>
+                    <a href="tel:+919674518240">Book Now</a>
 
-                    <a href="https://wa.me/919674518240" target="_blank">
-                        WhatsApp
-                    </a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
 
-                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">
-                        Instagram
-                    </a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
 
                 </div>
 
@@ -1249,32 +1340,523 @@ footer{
 
         <div class="car-card reveal">
 
-            <div class="car-image"></div>
+            <div class="car-image">
+                <img src="car 4.jpg" alt="Vintage Rolls Royce White 2">
+            </div>
+
             <div class="car-overlay"></div>
 
             <div class="car-content">
 
-                <div class="car-number">
-                    04
-                </div>
+                <div class="car-number">04</div>
 
                 <div class="car-name">
-                    YOUR CAR
+                    Vintage Rolls Royce White 2
                 </div>
 
                 <div class="car-actions">
 
-                    <a href="tel:+919674518240">
-                        Book Now
-                    </a>
+                    <a href="tel:+919674518240">Book Now</a>
 
-                    <a href="https://wa.me/919674518240" target="_blank">
-                        WhatsApp
-                    </a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
 
-                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">
-                        Instagram
-                    </a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 5 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 5.jpg" alt="Vintage Rolls Royce White Gold">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">05</div>
+
+                <div class="car-name">
+                    Vintage Rolls Royce White Gold
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 6 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 6.jpg" alt="Mercedes C 200">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">06</div>
+
+                <div class="car-name">
+                    Mercedes C 200
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 7 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 7.jpg" alt="Mercedes C 220">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">07</div>
+
+                <div class="car-name">
+                    Mercedes C 220
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 8 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 8.jpg" alt="BMW M5">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">08</div>
+
+                <div class="car-name">
+                    BMW M5
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 9 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 9.jpg" alt="BMW 520">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">09</div>
+
+                <div class="car-name">
+                    BMW 520
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 10 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 10.jpg" alt="BMW 520 2021">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">10</div>
+
+                <div class="car-name">
+                    BMW 520 2021
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 11 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 11.jpg" alt="BMW 520 D">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">11</div>
+
+                <div class="car-name">
+                    BMW 520 D
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 12 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 12.jpg" alt="Audi A3 Convertible Red">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">12</div>
+
+                <div class="car-name">
+                    Audi A3 Convertible Red
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 13 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 13.jpg" alt="Audi A3 Convertible Yellow">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">13</div>
+
+                <div class="car-name">
+                    Audi A3 Convertible Yellow
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 17 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 17.jpg" alt="Audi A6">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">17</div>
+
+                <div class="car-name">
+                    Audi A6
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 18 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 18.jpg" alt="Mini Cooper">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">18</div>
+
+                <div class="car-name">
+                    Mini Cooper
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 19 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 19.jpg" alt="Range Rover Defender">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">19</div>
+
+                <div class="car-name">
+                    Range Rover Defender
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 21 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 21.jpg" alt="Mahindra Jeep">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">21</div>
+
+                <div class="car-name">
+                    Mahindra Jeep
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 22 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 22.jpg" alt="Mahindra Thar Red">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">22</div>
+
+                <div class="car-name">
+                    Mahindra Thar Red
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 23 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 23.jpg" alt="Jaguar XF">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">23</div>
+
+                <div class="car-name">
+                    Jaguar XF
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAR 24 -->
+
+        <div class="car-card reveal">
+
+            <div class="car-image">
+                <img src="car 24.jpg" alt="Audi A3 Convertible White">
+            </div>
+
+            <div class="car-overlay"></div>
+
+            <div class="car-content">
+
+                <div class="car-number">24</div>
+
+                <div class="car-name">
+                    Audi A3 Convertible White
+                </div>
+
+                <div class="car-actions">
+
+                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
 
                 </div>
 
@@ -1311,16 +1893,11 @@ footer{
 
     <div class="experience-grid">
 
-
         <div class="experience-card reveal">
 
-            <div class="experience-icon">
-                ♢
-            </div>
+            <div class="experience-icon">♢</div>
 
-            <h3>
-                Weddings
-            </h3>
+            <h3>Weddings</h3>
 
             <p>
                 Arrive in style and make your special day even more memorable.
@@ -1331,13 +1908,9 @@ footer{
 
         <div class="experience-card reveal">
 
-            <div class="experience-icon">
-                ◇
-            </div>
+            <div class="experience-icon">◇</div>
 
-            <h3>
-                Photoshoots
-            </h3>
+            <h3>Photoshoots</h3>
 
             <p>
                 Premium vehicles that add a cinematic touch to your visual story.
@@ -1348,13 +1921,9 @@ footer{
 
         <div class="experience-card reveal">
 
-            <div class="experience-icon">
-                ✦
-            </div>
+            <div class="experience-icon">✦</div>
 
-            <h3>
-                Celebrations
-            </h3>
+            <h3>Celebrations</h3>
 
             <p>
                 Birthdays, anniversaries and every occasion worth celebrating.
@@ -1365,20 +1934,15 @@ footer{
 
         <div class="experience-card reveal">
 
-            <div class="experience-icon">
-                ◈
-            </div>
+            <div class="experience-icon">◈</div>
 
-            <h3>
-                Special Events
-            </h3>
+            <h3>Special Events</h3>
 
             <p>
                 When ordinary transportation simply isn't enough.
             </p>
 
         </div>
-
 
     </div>
 
@@ -1418,9 +1982,7 @@ footer{
 
                 <div>
 
-                    <strong>
-                        2024
-                    </strong>
+                    <strong>2024</strong>
 
                     <span>
                         Established
@@ -1431,9 +1993,7 @@ footer{
 
                 <div>
 
-                    <strong>
-                        Kolkata
-                    </strong>
+                    <strong>Kolkata</strong>
 
                     <span>
                         Service Area
@@ -1442,6 +2002,50 @@ footer{
                 </div>
 
             </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CERTIFICATIONS -->
+
+<section class="certifications">
+
+    <div class="certification-inner reveal">
+
+        <div class="eyebrow">
+            Verified Business
+        </div>
+
+        <h2>
+            Trusted by Customers
+        </h2>
+
+        <div class="certification-grid">
+
+
+            <div class="certification-card">
+
+                <img
+                    src="users choice.jpg"
+                    alt="Just Dial Certified Users Choice"
+                >
+
+            </div>
+
+
+            <div class="certification-card">
+
+                <img
+                    src="trust.jpg"
+                    alt="Just Dial Certified Trusted Business"
+                >
+
+            </div>
+
 
         </div>
 
@@ -1578,6 +2182,25 @@ footer{
                 </div>
 
 
+                <!-- EMAIL -->
+
+                <div class="contact-item">
+
+                    <div class="contact-label">
+                        Email
+                    </div>
+
+                    <div class="contact-value">
+
+                        <a href="mailto:ukluxury857@gmail.com">
+                            ukluxury857@gmail.com
+                        </a>
+
+                    </div>
+
+                </div>
+
+
                 <div class="contact-item">
 
                     <div class="contact-label">
@@ -1635,7 +2258,7 @@ footer{
                     >
 
                         <svg viewBox="0 0 24 24">
-                            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+                            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
                         </svg>
 
                         Instagram
@@ -1701,7 +2324,13 @@ footer{
     <div class="footer-inner">
 
         <div class="footer-logo">
-            UK LUXURY
+
+            <img src="logo.jpg" alt="UK LUXURY Logo">
+
+            <div class="footer-logo-text">
+                UK LUXURY
+            </div>
+
         </div>
 
         <div class="footer-copy">
@@ -1839,8 +2468,10 @@ document.querySelectorAll("a,button").forEach(function(element){
     element.addEventListener("mouseenter",function(){
 
         if(cursorRing){
+
             cursorRing.style.transform =
                 "translate(-50%,-50%) scale(1.5)";
+
         }
 
     });
@@ -1848,8 +2479,10 @@ document.querySelectorAll("a,button").forEach(function(element){
     element.addEventListener("mouseleave",function(){
 
         if(cursorRing){
+
             cursorRing.style.transform =
                 "translate(-50%,-50%) scale(1)";
+
         }
 
     });
@@ -1860,3 +2493,4 @@ document.querySelectorAll("a,button").forEach(function(element){
 
 </body>
 </html>
+```
