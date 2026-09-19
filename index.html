@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -52,17 +51,18 @@ img{
     display:block;
 }
 
-
-/* LOADER */
+/* =========================
+   LOADER
+========================= */
 
 .loader{
     position:fixed;
     inset:0;
     background:#050505;
-    z-index:9999;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+    z-index:99999;
     transition:opacity .8s ease, visibility .8s ease;
 }
 
@@ -77,77 +77,100 @@ img{
 
 .loader-logo{
     font-family:'Playfair Display',serif;
-    font-size:42px;
+    font-size:44px;
     letter-spacing:8px;
-    margin-bottom:25px;
+    color:#fff;
+}
+
+.loader-subtitle{
+    margin-top:8px;
+    font-size:12px;
+    letter-spacing:6px;
+    color:var(--gold);
+    text-transform:uppercase;
 }
 
 .loader-line{
-    width:160px;
+    width:0;
     height:1px;
     background:var(--gold);
-    transform:scaleX(0);
-    transform-origin:left;
+    margin:22px auto 0;
     animation:loaderLine 1.5s ease forwards;
 }
 
 @keyframes loaderLine{
     to{
-        transform:scaleX(1);
+        width:180px;
     }
 }
 
-
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    height:82px;
-    z-index:1000;
+    height:92px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 6%;
+    padding:0 5%;
+    z-index:1000;
     transition:.4s ease;
+    border-bottom:1px solid transparent;
 }
 
 .navbar.scrolled{
-    background:rgba(7,7,7,.82);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid var(--border);
+    background:rgba(7,7,7,.94);
+    backdrop-filter:blur(15px);
+    border-color:var(--border);
 }
 
-.nav-logo{
+.nav-brand{
     display:flex;
     align-items:center;
-    gap:14px;
+    gap:15px;
 }
 
-.nav-logo img{
-    width:52px;
-    height:52px;
+.nav-brand img{
+    width:110px;
+    height:72px;
     object-fit:contain;
+    transition:.4s ease;
 }
 
-.nav-logo-text{
+.brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1;
+}
+
+.brand-name{
     font-family:'Playfair Display',serif;
-    font-size:25px;
-    letter-spacing:5px;
+    font-size:21px;
+    letter-spacing:4px;
+}
+
+.brand-sub{
+    font-size:8px;
+    letter-spacing:3px;
+    color:var(--gold);
+    margin-top:7px;
 }
 
 .nav-links{
     display:flex;
     align-items:center;
-    gap:38px;
+    gap:35px;
 }
 
 .nav-links a{
     font-size:12px;
-    letter-spacing:2px;
     text-transform:uppercase;
+    letter-spacing:2px;
     color:#ddd;
     transition:.3s ease;
 }
@@ -158,8 +181,13 @@ img{
 
 .nav-call{
     border:1px solid var(--gold);
-    padding:12px 19px;
+    padding:12px 20px;
     color:var(--gold)!important;
+}
+
+.nav-call:hover{
+    background:var(--gold);
+    color:#000!important;
 }
 
 .menu-btn{
@@ -168,150 +196,205 @@ img{
     cursor:pointer;
 }
 
-
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     min-height:100vh;
     position:relative;
     display:flex;
     align-items:center;
+    justify-content:center;
+    text-align:center;
     overflow:hidden;
+    background:
+        radial-gradient(circle at center,rgba(200,169,107,.08),transparent 45%),
+        #070707;
 }
 
-.hero-bg{
+.hero::before{
+    content:"";
     position:absolute;
     inset:0;
     background:
-        linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.48),rgba(0,0,0,.75)),
-        radial-gradient(circle at 75% 50%,#2a2927 0%,#111 35%,#050505 75%);
-    transform:scale(1.05);
+        linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,black,transparent);
 }
 
 .hero-content{
     position:relative;
     z-index:2;
-    width:90%;
-    max-width:1300px;
-    margin:auto;
-    padding-top:70px;
+    padding:120px 20px 70px;
 }
 
-.hero-small{
-    font-size:12px;
-    letter-spacing:5px;
+.hero-eyebrow{
     color:var(--gold);
-    margin-bottom:22px;
+    font-size:11px;
+    letter-spacing:6px;
     text-transform:uppercase;
+    margin-bottom:25px;
 }
 
 .hero h1{
     font-family:'Playfair Display',serif;
-    font-size:clamp(55px,9vw,125px);
-    line-height:.9;
+    font-size:clamp(58px,9vw,125px);
     font-weight:500;
+    line-height:.9;
     letter-spacing:-3px;
 }
 
 .hero h1 span{
     display:block;
-    color:transparent;
-    -webkit-text-stroke:1px rgba(244,242,237,.55);
+    color:var(--gold);
+}
+
+.hero-car-rental{
+    margin-top:25px;
+    font-size:14px;
+    letter-spacing:8px;
+    text-transform:uppercase;
+    color:#fff;
+    font-weight:500;
 }
 
 .hero-description{
-    max-width:470px;
-    margin-top:35px;
-    color:#b9b9b9;
-    font-size:16px;
+    max-width:620px;
+    margin:35px auto 0;
+    color:var(--muted);
+    font-size:15px;
     line-height:1.8;
 }
 
 .hero-buttons{
     margin-top:40px;
     display:flex;
+    justify-content:center;
     gap:15px;
     flex-wrap:wrap;
 }
 
 .btn{
-    padding:16px 28px;
-    border:1px solid rgba(255,255,255,.25);
-    font-size:11px;
-    letter-spacing:2px;
+    padding:16px 30px;
+    border:1px solid var(--gold);
     text-transform:uppercase;
-    transition:.35s ease;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
+    letter-spacing:2px;
+    font-size:11px;
+    transition:.4s ease;
 }
 
 .btn-gold{
     background:var(--gold);
-    color:#090909;
-    border-color:var(--gold);
-}
-
-.btn:hover{
-    transform:translateY(-3px);
+    color:#000;
 }
 
 .btn-gold:hover{
     background:var(--gold-light);
 }
 
+.btn-outline{
+    color:#fff;
+}
 
-/* INTRO */
+.btn-outline:hover{
+    background:#fff;
+    color:#000;
+}
+
+.scroll-indicator{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:9px;
+    letter-spacing:4px;
+    color:#777;
+    text-transform:uppercase;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section{
+    padding:110px 6%;
+}
+
+.section-label{
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.section-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(40px,5vw,70px);
+    font-weight:500;
+    line-height:1;
+}
+
+.section-heading{
+    max-width:800px;
+    margin-bottom:60px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    line-height:1.8;
+    max-width:650px;
+    margin-top:25px;
+}
+
+/* =========================
+   INTRO
+========================= */
 
 .intro{
-    padding:150px 8%;
     background:var(--black2);
 }
 
-.intro-inner{
-    max-width:1050px;
-    margin:auto;
-    text-align:center;
+.intro-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
 }
 
-.eyebrow{
-    color:var(--gold);
-    letter-spacing:4px;
-    font-size:11px;
-    text-transform:uppercase;
-    margin-bottom:25px;
-}
-
-.intro h2{
-    font-family:'Playfair Display',serif;
-    font-weight:400;
-    font-size:clamp(35px,5vw,65px);
-    line-height:1.1;
-}
-
-.intro p{
-    max-width:700px;
-    margin:30px auto 0;
+.intro-text p{
     color:var(--muted);
     line-height:1.9;
+    font-size:16px;
 }
 
+.intro-number{
+    font-family:'Playfair Display',serif;
+    font-size:170px;
+    color:rgba(200,169,107,.08);
+    line-height:.8;
+    text-align:right;
+}
 
-/* MARQUEE */
+/* =========================
+   MARQUEE
+========================= */
 
 .marquee{
-    overflow:hidden;
     background:var(--gold);
-    color:#111;
-    padding:17px 0;
+    color:#000;
+    padding:18px 0;
+    overflow:hidden;
     white-space:nowrap;
 }
 
 .marquee-track{
     display:inline-block;
     animation:marquee 22s linear infinite;
-    font-size:12px;
+    font-size:11px;
+    font-weight:600;
     letter-spacing:4px;
     text-transform:uppercase;
 }
@@ -321,50 +404,27 @@ img{
 }
 
 @keyframes marquee{
-    from{transform:translateX(0)}
-    to{transform:translateX(-50%)}
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
 }
 
-
-/* FLEET */
+/* =========================
+   FLEET
+========================= */
 
 .fleet{
-    padding:130px 6%;
-    background:var(--black);
-}
-
-.section-header{
-    max-width:1250px;
-    margin:0 auto 55px;
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    gap:30px;
-}
-
-.section-header h2{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(40px,6vw,75px);
-    font-weight:400;
-}
-
-.section-header p{
-    color:var(--muted);
-    max-width:350px;
-    line-height:1.7;
-    font-size:14px;
+    background:#090909;
 }
 
 .fleet-grid{
-    max-width:1250px;
-    margin:auto;
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:22px;
+    gap:24px;
 }
-
-
-/* EVERY CAR HAS EXACTLY THE SAME DISPLAY SIZE */
 
 .car-card{
     height:530px;
@@ -376,8 +436,8 @@ img{
 }
 
 .car-card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(200,169,107,.5);
+    border-color:rgba(200,169,107,.55);
+    transform:translateY(-5px);
 }
 
 .car-image{
@@ -404,33 +464,33 @@ img{
 .car-overlay{
     position:absolute;
     inset:0;
-    background:linear-gradient(
-        transparent 30%,
-        rgba(0,0,0,.15) 48%,
-        rgba(0,0,0,.95) 100%
-    );
-    z-index:1;
+    background:
+        linear-gradient(to bottom,
+        rgba(0,0,0,.05) 25%,
+        rgba(0,0,0,.15) 40%,
+        rgba(0,0,0,.92) 100%);
 }
 
-.car-content{
+.car-info{
     position:absolute;
     bottom:0;
     left:0;
-    right:0;
+    width:100%;
     padding:35px;
     z-index:2;
 }
 
 .car-number{
-    font-size:11px;
-    letter-spacing:3px;
+    font-size:10px;
+    letter-spacing:4px;
     color:var(--gold);
     margin-bottom:10px;
 }
 
 .car-name{
     font-family:'Playfair Display',serif;
-    font-size:35px;
+    font-size:30px;
+    line-height:1.15;
     margin-bottom:20px;
 }
 
@@ -441,31 +501,29 @@ img{
 }
 
 .car-actions a{
-    padding:12px 16px;
-    border:1px solid rgba(255,255,255,.2);
-    font-size:10px;
+    font-size:9px;
     letter-spacing:1.5px;
     text-transform:uppercase;
+    padding:10px 15px;
+    border:1px solid rgba(255,255,255,.35);
     transition:.3s ease;
 }
 
 .car-actions a:hover{
     background:var(--gold);
-    color:#111;
+    color:#000;
     border-color:var(--gold);
 }
 
-
-/* EXPERIENCE */
+/* =========================
+   EXPERIENCE
+========================= */
 
 .experience{
-    padding:130px 6%;
     background:var(--black2);
 }
 
 .experience-grid{
-    max-width:1250px;
-    margin:auto;
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:1px;
@@ -474,402 +532,425 @@ img{
 
 .experience-card{
     background:var(--black2);
-    min-height:280px;
-    padding:35px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
+    padding:45px 30px;
+    min-height:230px;
     transition:.4s ease;
 }
 
 .experience-card:hover{
-    background:#181818;
+    background:#151515;
 }
 
 .experience-icon{
-    font-size:35px;
-    margin-bottom:auto;
-    opacity:.8;
+    font-size:28px;
+    color:var(--gold);
+    margin-bottom:30px;
 }
 
 .experience-card h3{
     font-family:'Playfair Display',serif;
-    font-size:27px;
-    font-weight:400;
-    margin-bottom:12px;
+    font-size:24px;
+    margin-bottom:15px;
 }
 
 .experience-card p{
     color:var(--muted);
-    line-height:1.6;
     font-size:13px;
+    line-height:1.7;
 }
 
-
-/* ABOUT */
+/* =========================
+   ABOUT
+========================= */
 
 .about{
-    padding:150px 8%;
-    background:var(--black);
+    background:#080808;
 }
 
 .about-grid{
-    max-width:1150px;
-    margin:auto;
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:100px;
+    gap:90px;
     align-items:center;
 }
 
-.about h2{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(42px,5vw,70px);
-    font-weight:400;
-    line-height:1;
-}
-
-.about-text{
+.about-text p{
     color:var(--muted);
     line-height:1.9;
-    font-size:15px;
+    margin-top:25px;
 }
 
-.established{
+.about-list{
     margin-top:35px;
-    border-top:1px solid var(--border);
-    padding-top:25px;
-    display:flex;
-    gap:40px;
 }
 
-.established strong{
-    font-family:'Playfair Display',serif;
-    font-size:32px;
-    color:var(--white);
-}
-
-.established span{
-    display:block;
-    color:var(--muted);
-    font-size:11px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    margin-top:5px;
-}
-
-
-/* CERTIFICATIONS */
-
-.certifications{
-    padding:100px 6%;
-    background:#0b0b0b;
-    border-top:1px solid var(--border);
-}
-
-.certification-inner{
-    max-width:1000px;
-    margin:auto;
-    text-align:center;
-}
-
-.certification-grid{
-    margin-top:45px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:35px;
-    flex-wrap:wrap;
-}
-
-.certification-card{
-    width:260px;
-    min-height:180px;
-    padding:20px;
-    border:1px solid var(--border);
-    background:#101010;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:.4s ease;
-}
-
-.certification-card:hover{
-    transform:translateY(-6px);
-    border-color:rgba(200,169,107,.5);
-}
-
-.certification-card img{
-    width:100%;
-    height:140px;
-    object-fit:contain;
-}
-
-
-/* POLICY */
-
-.policy{
-    padding:110px 6%;
-    background:#0b0b0b;
-    border-top:1px solid var(--border);
+.about-list div{
+    padding:15px 0;
     border-bottom:1px solid var(--border);
-}
-
-.policy-inner{
-    max-width:1150px;
-    margin:auto;
-    text-align:center;
-}
-
-.policy h2{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(35px,5vw,65px);
-    font-weight:400;
-}
-
-.policy-big{
-    margin:35px 0 15px;
-    color:var(--gold);
-    font-size:clamp(30px,5vw,60px);
-    letter-spacing:4px;
-}
-
-.policy p{
-    color:var(--muted);
-    font-size:14px;
-}
-
-
-/* BOOKING CTA */
-
-.booking{
-    padding:150px 6%;
-    text-align:center;
-    background:
-        radial-gradient(circle at center,#29231a 0%,#0a0a0a 45%,#050505 100%);
-}
-
-.booking h2{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(45px,7vw,90px);
-    font-weight:400;
-}
-
-.booking p{
-    color:var(--muted);
-    margin:20px auto 35px;
-    max-width:500px;
-}
-
-.booking-buttons{
     display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
+    justify-content:space-between;
+    font-size:13px;
 }
 
+.about-list span:last-child{
+    color:var(--gold);
+}
 
-/* CONTACT */
+/* =========================
+   REVIEWS
+========================= */
 
-.contact{
-    padding:120px 6% 80px;
+.reviews{
     background:var(--black2);
 }
 
-.contact-inner{
-    max-width:1200px;
-    margin:auto;
-}
-
-.contact-header{
+.reviews-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
     margin-bottom:60px;
 }
 
-.contact-header h2{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(45px,7vw,80px);
-    font-weight:400;
+.justdial-rating{
+    text-align:right;
 }
 
-.contact-header p{
+.justdial-rating .stars{
+    color:var(--gold);
+    font-size:25px;
+    letter-spacing:3px;
+}
+
+.justdial-rating strong{
+    display:block;
+    font-family:'Playfair Display',serif;
+    font-size:34px;
+    margin-top:7px;
+}
+
+.justdial-rating span{
     color:var(--muted);
-    margin-top:15px;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+.review-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.review-card{
+    background:#111;
+    border:1px solid var(--border);
+    padding:32px 26px;
+    min-height:290px;
+    display:flex;
+    flex-direction:column;
+    transition:.4s ease;
+}
+
+.review-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(200,169,107,.5);
+}
+
+.review-stars{
+    color:var(--gold);
+    letter-spacing:3px;
+    font-size:14px;
+    margin-bottom:22px;
+}
+
+.review-text{
+    color:#ddd;
+    font-size:13px;
+    line-height:1.8;
+    flex:1;
+}
+
+.reviewer{
+    margin-top:25px;
+    padding-top:18px;
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    align-items:center;
+}
+
+.reviewer-name{
+    font-size:12px;
+    font-weight:600;
+}
+
+.review-source{
+    font-size:9px;
+    color:var(--gold);
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.reviews-button{
+    margin-top:45px;
+    text-align:center;
+}
+
+.justdial-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:15px 27px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:10px;
+    transition:.35s ease;
+}
+
+.justdial-btn:hover{
+    background:var(--gold);
+    color:#000;
+}
+
+/* =========================
+   CERTIFICATIONS
+========================= */
+
+.certifications{
+    background:#090909;
+}
+
+.cert-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    max-width:900px;
+    margin:auto;
+}
+
+.cert-card{
+    background:#111;
+    border:1px solid var(--border);
+    min-height:260px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+    transition:.4s ease;
+}
+
+.cert-card:hover{
+    border-color:rgba(200,169,107,.5);
+    transform:translateY(-5px);
+}
+
+.cert-card img{
+    max-width:100%;
+    max-height:190px;
+    object-fit:contain;
+}
+
+/* =========================
+   POLICY
+========================= */
+
+.policy{
+    background:var(--black2);
+}
+
+.policy-box{
+    border:1px solid var(--gold);
+    padding:60px;
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+}
+
+.policy-main{
+    font-family:'Playfair Display',serif;
+    font-size:40px;
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
+.policy-box p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    background:
+        radial-gradient(circle at center,rgba(200,169,107,.12),transparent 50%),
+        #080808;
+    text-align:center;
+}
+
+.cta h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(45px,6vw,80px);
+    font-weight:500;
+}
+
+.cta p{
+    color:var(--muted);
+    margin:25px auto 35px;
+    max-width:600px;
+    line-height:1.8;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    background:#0d0d0d;
 }
 
 .contact-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:70px;
+    gap:80px;
 }
 
-.contact-info{
-    display:flex;
-    flex-direction:column;
-    gap:0;
-}
-
-.contact-item{
-    padding:25px 0;
-    border-bottom:1px solid var(--border);
-}
-
-.contact-label{
-    font-size:10px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:9px;
-}
-
-.contact-value{
-    font-size:18px;
-    color:var(--white);
-}
-
-.contact-value a{
-    transition:.3s ease;
-}
-
-.contact-value a:hover{
-    color:var(--gold);
-}
-
-
-/* SOCIAL BUTTONS */
-
-.social-buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:35px;
-}
-
-.social-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:15px 20px;
-    border:1px solid var(--border);
-    font-size:11px;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    transition:.35s ease;
-}
-
-.social-btn svg{
-    width:19px;
-    height:19px;
-    fill:currentColor;
-}
-
-.social-btn:hover{
-    transform:translateY(-3px);
-}
-
-.instagram-btn:hover{
-    background:#d62976;
-    border-color:#d62976;
-    color:white;
-}
-
-.whatsapp-btn:hover{
-    background:#25D366;
-    border-color:#25D366;
-    color:white;
-}
-
-
-/* MAP */
-
-.map-wrapper{
-    min-height:430px;
-    border:1px solid var(--border);
-    overflow:hidden;
-    position:relative;
-    background:#111;
-}
-
-.map-wrapper iframe{
-    width:100%;
-    height:430px;
-    border:0;
-    display:block;
-    filter:grayscale(100%) contrast(1.1);
-    transition:.5s ease;
-}
-
-.map-wrapper:hover iframe{
-    filter:grayscale(0%) contrast(1);
-}
-
-.map-link{
-    position:absolute;
-    left:20px;
-    bottom:20px;
-    z-index:5;
-    background:var(--gold);
-    color:#111;
-    padding:14px 20px;
-    font-size:10px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    font-weight:600;
-    transition:.3s ease;
-}
-
-.map-link:hover{
-    background:var(--gold-light);
-    transform:translateY(-3px);
-}
-
-
-/* FOOTER */
-
-footer{
-    padding:35px 6%;
-    border-top:1px solid var(--border);
-    background:#050505;
-}
-
-.footer-inner{
-    max-width:1250px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.contact-items{
+    display:grid;
+    grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
-.footer-logo{
-    display:flex;
-    align-items:center;
-    gap:13px;
+.contact-card{
+    border:1px solid var(--border);
+    padding:25px;
+    background:#111;
 }
 
-.footer-logo img{
-    width:45px;
-    height:45px;
+.contact-card span{
+    display:block;
+    color:var(--gold);
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.contact-card strong{
+    font-size:14px;
+    font-weight:400;
+    line-height:1.6;
+}
+
+.contact-card a{
+    color:#fff;
+}
+
+.contact-card a:hover{
+    color:var(--gold);
+}
+
+.contact-socials{
+    margin-top:25px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.social-btn{
+    padding:13px 22px;
+    border:1px solid var(--border);
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    transition:.3s ease;
+}
+
+.social-btn:hover{
+    background:var(--gold);
+    color:#000;
+    border-color:var(--gold);
+}
+
+.map{
+    min-height:450px;
+    border:1px solid var(--border);
+    overflow:hidden;
+}
+
+.map iframe{
+    width:100%;
+    height:100%;
+    min-height:450px;
+    border:0;
+    filter:grayscale(1) contrast(1.1);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#050505;
+    border-top:1px solid var(--border);
+    padding:50px 6%;
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.footer-brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.footer-brand img{
+    width:110px;
+    height:72px;
     object-fit:contain;
 }
 
-.footer-logo-text{
+.footer-brand-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.footer-name{
     font-family:'Playfair Display',serif;
+    font-size:20px;
     letter-spacing:4px;
+}
+
+.footer-sub{
+    color:var(--gold);
+    font-size:8px;
+    letter-spacing:3px;
+    margin-top:7px;
 }
 
 .footer-copy{
     color:#666;
-    font-size:11px;
+    font-size:10px;
     letter-spacing:1px;
 }
 
-
-/* REVEAL */
+/* =========================
+   SCROLL REVEAL
+========================= */
 
 .reveal{
     opacity:0;
     transform:translateY(35px);
-    transition:opacity .9s ease, transform .9s ease;
+    transition:1s ease;
 }
 
 .reveal.active{
@@ -877,81 +958,111 @@ footer{
     transform:translateY(0);
 }
 
-
-/* CURSOR */
+/* =========================
+   CURSOR
+========================= */
 
 .cursor{
-    width:9px;
-    height:9px;
-    border-radius:50%;
+    width:8px;
+    height:8px;
     background:var(--gold);
     position:fixed;
+    border-radius:50%;
     pointer-events:none;
     z-index:99999;
     transform:translate(-50%,-50%);
-    transition:transform .1s linear;
 }
 
 .cursor-ring{
-    width:35px;
-    height:35px;
-    border:1px solid rgba(200,169,107,.6);
-    border-radius:50%;
+    width:32px;
+    height:32px;
+    border:1px solid rgba(200,169,107,.5);
     position:fixed;
+    border-radius:50%;
     pointer-events:none;
     z-index:99998;
     transform:translate(-50%,-50%);
-    transition:all .15s ease;
+    transition:.15s ease;
 }
 
-
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:850px){
 
     .navbar{
-        height:72px;
+        height:82px;
         padding:0 5%;
     }
 
-    .nav-logo img{
-        width:45px;
-        height:45px;
+    .nav-brand img{
+        width:85px;
+        height:62px;
     }
 
-    .nav-logo-text{
-        font-size:20px;
+    .brand-name{
+        font-size:16px;
         letter-spacing:3px;
+    }
+
+    .brand-sub{
+        font-size:7px;
     }
 
     .nav-links{
         position:absolute;
-        top:72px;
+        top:82px;
         left:0;
         width:100%;
-        background:rgba(7,7,7,.97);
-        backdrop-filter:blur(15px);
+        background:#090909;
         flex-direction:column;
-        padding:30px;
-        gap:25px;
-        display:none;
-        border-bottom:1px solid var(--border);
+        gap:0;
+        border-top:1px solid var(--border);
+        max-height:0;
+        overflow:hidden;
+        transition:.4s ease;
     }
 
     .nav-links.active{
-        display:flex;
+        max-height:500px;
+    }
+
+    .nav-links a{
+        width:100%;
+        padding:20px;
+        text-align:center;
+        border-bottom:1px solid var(--border);
+    }
+
+    .nav-call{
+        border:none;
+        padding:20px!important;
     }
 
     .menu-btn{
         display:block;
     }
 
-    .nav-call{
-        display:none;
+    .hero h1{
+        font-size:clamp(50px,15vw,90px);
     }
 
-    .hero-content{
-        width:88%;
+    .hero-car-rental{
+        font-size:11px;
+        letter-spacing:5px;
+    }
+
+    .intro-grid,
+    .about-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+        gap:45px;
+    }
+
+    .intro-number{
+        font-size:100px;
+        text-align:left;
     }
 
     .fleet-grid{
@@ -962,97 +1073,120 @@ footer{
         grid-template-columns:1fr 1fr;
     }
 
-    .about-grid{
-        grid-template-columns:1fr;
-        gap:50px;
+    .review-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .contact-grid{
-        grid-template-columns:1fr;
-        gap:45px;
-    }
-
-    .section-header{
+    .reviews-top{
         flex-direction:column;
         align-items:flex-start;
     }
 
-    .map-wrapper,
-    .map-wrapper iframe{
-        min-height:350px;
-        height:350px;
+    .justdial-rating{
+        text-align:left;
     }
 
-}
+    .cert-grid{
+        grid-template-columns:1fr;
+    }
 
+    .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .cursor,
+    .cursor-ring{
+        display:none;
+    }
+}
 
 @media(max-width:500px){
 
-    .hero h1{
-        font-size:58px;
+    section{
+        padding:80px 5%;
+    }
+
+    .navbar{
+        padding:0 4%;
+    }
+
+    .nav-brand{
+        gap:8px;
+    }
+
+    .nav-brand img{
+        width:75px;
+        height:58px;
+    }
+
+    .brand-name{
+        font-size:14px;
+        letter-spacing:2px;
+    }
+
+    .hero-content{
+        padding-top:120px;
+    }
+
+    .hero-eyebrow{
+        letter-spacing:4px;
+        font-size:9px;
+    }
+
+    .hero-car-rental{
+        font-size:10px;
+        letter-spacing:4px;
     }
 
     .hero-description{
-        font-size:14px;
+        font-size:13px;
     }
 
-    .intro,
-    .fleet,
-    .experience,
-    .about,
-    .contact{
-        padding-top:90px;
-        padding-bottom:90px;
+    .btn{
+        width:100%;
+        max-width:280px;
     }
 
     .car-card{
-        height:450px;
+        height:470px;
     }
 
-    .car-content{
+    .car-info{
         padding:25px;
     }
 
     .car-name{
-        font-size:29px;
+        font-size:25px;
     }
 
     .experience-grid{
         grid-template-columns:1fr;
     }
 
-    .experience-card{
-        min-height:220px;
+    .review-grid{
+        grid-template-columns:1fr;
     }
 
-    .social-buttons{
-        flex-direction:column;
+    .review-card{
+        min-height:250px;
     }
 
-    .social-btn{
-        justify-content:center;
+    .contact-items{
+        grid-template-columns:1fr;
     }
 
-    .map-wrapper,
-    .map-wrapper iframe{
-        height:300px;
-        min-height:300px;
+    .policy-box{
+        padding:35px 20px;
     }
 
-    .footer-inner{
-        flex-direction:column;
-        text-align:center;
+    .policy-main{
+        font-size:30px;
     }
 
-}
-
-
-/* HIDE CUSTOM CURSOR ON TOUCH DEVICES */
-
-@media(hover:none){
-    .cursor,
-    .cursor-ring{
-        display:none;
+    .footer-brand img{
+        width:85px;
+        height:62px;
     }
 }
 
@@ -1061,85 +1195,76 @@ footer{
 
 <body>
 
+<!-- =========================
+     LOADER
+========================= -->
 
-<!-- LOADER -->
-
-<div class="loader" id="loader">
-
+<div class="loader">
     <div class="loader-inner">
-
-        <div class="loader-logo">
-            UK LUXURY
-        </div>
-
+        <div class="loader-logo">UK LUXURY</div>
+        <div class="loader-subtitle">CAR RENTAL</div>
         <div class="loader-line"></div>
-
     </div>
-
 </div>
 
+<!-- =========================
+     NAVBAR
+========================= -->
 
-<!-- CUSTOM CURSOR -->
+<header class="navbar" id="navbar">
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-
-<!-- NAVBAR -->
-
-<nav class="navbar" id="navbar">
-
-    <a href="#home" class="nav-logo">
+    <a href="#home" class="nav-brand">
 
         <img src="logo.jpg" alt="UK LUXURY Logo">
 
-        <div class="nav-logo-text">
-            UK LUXURY
+        <div class="brand-text">
+            <div class="brand-name">UK LUXURY</div>
+            <div class="brand-sub">CAR RENTAL</div>
         </div>
 
     </a>
 
-    <div class="nav-links" id="navLinks">
+    <nav class="nav-links" id="navLinks">
 
         <a href="#home">Home</a>
         <a href="#fleet">Fleet</a>
         <a href="#experience">Experience</a>
         <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
 
-    </div>
+        <a href="tel:+919674518240" class="nav-call">Call Now</a>
 
-    <a href="tel:+919674518240" class="nav-call">
-        Call Now
-    </a>
+    </nav>
 
-    <div class="menu-btn" id="menuBtn">
-        ☰
-    </div>
+    <div class="menu-btn" id="menuBtn">☰</div>
 
-</nav>
+</header>
 
-
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero" id="home">
 
-    <div class="hero-bg" id="heroBg"></div>
-
     <div class="hero-content reveal">
 
-        <div class="hero-small">
-            Premium Car Rental · Kolkata
+        <div class="hero-eyebrow">
+            PREMIUM CAR RENTAL · KOLKATA
         </div>
 
         <h1>
-            ARRIVE IN
-            <span>LUXURY.</span>
+            ARRIVE
+            <span>IN LUXURY.</span>
         </h1>
 
+        <div class="hero-car-rental">
+            CAR RENTAL
+        </div>
+
         <p class="hero-description">
-            Luxury cars for weddings, photoshoots, celebrations
-            and moments that deserve something extraordinary.
+            Experience premium luxury cars, vintage classics and unforgettable journeys across Kolkata.
+            From weddings and celebrations to photoshoots and special occasions — arrive in a way that gets remembered.
         </p>
 
         <div class="hero-buttons">
@@ -1148,7 +1273,7 @@ footer{
                 Explore Fleet
             </a>
 
-            <a href="tel:+919674518240" class="btn">
+            <a href="https://wa.me/919674518240" class="btn btn-outline" target="_blank">
                 Book Now
             </a>
 
@@ -1156,86 +1281,88 @@ footer{
 
     </div>
 
+    <div class="scroll-indicator">
+        Scroll to explore
+    </div>
+
 </section>
 
-
-<!-- INTRO -->
+<!-- =========================
+     INTRO
+========================= -->
 
 <section class="intro">
 
-    <div class="intro-inner reveal">
+    <div class="intro-grid">
 
-        <div class="eyebrow">
-            UK LUXURY
+        <div class="intro-text reveal">
+
+            <div class="section-label">
+                THE UK LUXURY EXPERIENCE
+            </div>
+
+            <h2 class="section-title">
+                More Than<br>
+                A Car.
+            </h2>
+
+            <p>
+                At UK LUXURY, every journey is designed to feel different.
+                From iconic vintage Rolls Royce cars to modern luxury sedans and SUVs,
+                we bring style, comfort and presence to every occasion.
+            </p>
+
         </div>
 
-        <h2>
-            Make an entrance<br>
-            worth remembering.
-        </h2>
-
-        <p>
-            From elegant wedding arrivals to cinematic photoshoots,
-            UK LUXURY brings premium vehicles and an elevated experience
-            across Kolkata.
-        </p>
+        <div class="intro-number reveal">
+            01
+        </div>
 
     </div>
 
 </section>
 
-
-<!-- MARQUEE -->
+<!-- =========================
+     MARQUEE
+========================= -->
 
 <div class="marquee">
 
     <div class="marquee-track">
 
-        <span>UK LUXURY</span>
-        <span>WEDDINGS</span>
-        <span>PHOTOSHOOTS</span>
-        <span>CELEBRATIONS</span>
-        <span>KOLKATA</span>
-
-        <span>UK LUXURY</span>
-        <span>WEDDINGS</span>
-        <span>PHOTOSHOOTS</span>
-        <span>CELEBRATIONS</span>
-        <span>KOLKATA</span>
+        LUXURY · STYLE · COMFORT · EXPERIENCE · KOLKATA ·
+        <span>UK LUXURY CAR RENTAL</span>
+        LUXURY · STYLE · COMFORT · EXPERIENCE · KOLKATA ·
+        <span>UK LUXURY CAR RENTAL</span>
 
     </div>
 
 </div>
 
-
-<!-- FLEET -->
+<!-- =========================
+     FLEET
+========================= -->
 
 <section class="fleet" id="fleet">
 
-    <div class="section-header reveal">
+    <div class="section-heading reveal">
 
-        <div>
-
-            <div class="eyebrow">
-                The Collection
-            </div>
-
-            <h2>
-                Our Fleet
-            </h2>
-
+        <div class="section-label">
+            OUR COLLECTION
         </div>
 
+        <h2 class="section-title">
+            THE FLEET
+        </h2>
+
         <p>
-            Carefully selected luxury vehicles designed
-            to make every arrival unforgettable.
+            Choose from an exclusive collection of vintage icons,
+            luxury sedans, premium SUVs and stylish convertibles.
         </p>
 
     </div>
 
-
     <div class="fleet-grid">
-
 
         <!-- CAR 1 -->
 
@@ -1247,9 +1374,9 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">01</div>
+                <div class="car-number">01 / VINTAGE</div>
 
                 <div class="car-name">
                     Vintage Rolls Royce White
@@ -1257,18 +1384,23 @@ footer{
 
                 <div class="car-actions">
 
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">
+                        Book Now
+                    </a>
 
-                    <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
+                    <a href="https://wa.me/919674518240" target="_blank">
+                        WhatsApp
+                    </a>
 
-                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
+                    <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">
+                        Instagram
+                    </a>
 
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 2 -->
 
@@ -1280,28 +1412,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">02</div>
+                <div class="car-number">02 / VINTAGE</div>
 
                 <div class="car-name">
                     Vintage White Gold 2
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
-
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
-
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 3 -->
 
@@ -1313,28 +1440,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">03</div>
+                <div class="car-number">03 / VINTAGE</div>
 
                 <div class="car-name">
                     Vintage Rolls Royce Red
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
-
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
-
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 4 -->
 
@@ -1346,28 +1468,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">04</div>
+                <div class="car-number">04 / VINTAGE</div>
 
                 <div class="car-name">
                     Vintage Rolls Royce White 2
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
-
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
-
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 5 -->
 
@@ -1379,26 +1496,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">05</div>
+                <div class="car-number">05 / VINTAGE</div>
 
                 <div class="car-name">
                     Vintage Rolls Royce White Gold
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 6 -->
 
@@ -1410,26 +1524,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">06</div>
+                <div class="car-number">06 / MERCEDES</div>
 
                 <div class="car-name">
                     Mercedes C 200
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 7 -->
 
@@ -1441,26 +1552,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">07</div>
+                <div class="car-number">07 / MERCEDES</div>
 
                 <div class="car-name">
                     Mercedes C 220
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 8 -->
 
@@ -1472,26 +1580,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">08</div>
+                <div class="car-number">08 / BMW</div>
 
                 <div class="car-name">
                     BMW M5
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 9 -->
 
@@ -1503,26 +1608,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">09</div>
+                <div class="car-number">09 / BMW</div>
 
                 <div class="car-name">
                     BMW 520
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 10 -->
 
@@ -1534,26 +1636,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">10</div>
+                <div class="car-number">10 / BMW</div>
 
                 <div class="car-name">
                     BMW 520 2021
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 11 -->
 
@@ -1565,26 +1664,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">11</div>
+                <div class="car-number">11 / BMW</div>
 
                 <div class="car-name">
                     BMW 520 D
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 12 -->
 
@@ -1596,26 +1692,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">12</div>
+                <div class="car-number">12 / AUDI</div>
 
                 <div class="car-name">
                     Audi A3 Convertible Red
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 13 -->
 
@@ -1627,26 +1720,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">13</div>
+                <div class="car-number">13 / AUDI</div>
 
                 <div class="car-name">
                     Audi A3 Convertible Yellow
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 17 -->
 
@@ -1658,26 +1748,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">17</div>
+                <div class="car-number">14 / AUDI</div>
 
                 <div class="car-name">
                     Audi A6
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 18 -->
 
@@ -1689,26 +1776,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">18</div>
+                <div class="car-number">15 / MINI</div>
 
                 <div class="car-name">
                     Mini Cooper
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 19 -->
 
@@ -1720,26 +1804,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">19</div>
+                <div class="car-number">16 / RANGE ROVER</div>
 
                 <div class="car-name">
                     Range Rover Defender
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 21 -->
 
@@ -1751,26 +1832,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">21</div>
+                <div class="car-number">17 / MAHINDRA</div>
 
                 <div class="car-name">
                     Mahindra Jeep
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 22 -->
 
@@ -1782,26 +1860,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">22</div>
+                <div class="car-number">18 / MAHINDRA</div>
 
                 <div class="car-name">
                     Mahindra Thar Red
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 23 -->
 
@@ -1813,26 +1888,23 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">23</div>
+                <div class="car-number">19 / JAGUAR</div>
 
                 <div class="car-name">
                     Jaguar XF
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <!-- CAR 24 -->
 
@@ -1844,67 +1916,60 @@ footer{
 
             <div class="car-overlay"></div>
 
-            <div class="car-content">
+            <div class="car-info">
 
-                <div class="car-number">24</div>
+                <div class="car-number">20 / AUDI</div>
 
                 <div class="car-name">
                     Audi A3 Convertible White
                 </div>
 
                 <div class="car-actions">
-
-                    <a href="tel:+919674518240">Book Now</a>
+                    <a href="https://wa.me/919674518240" target="_blank">Book Now</a>
                     <a href="https://wa.me/919674518240" target="_blank">WhatsApp</a>
                     <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw" target="_blank">Instagram</a>
-
                 </div>
 
             </div>
 
         </div>
 
-
     </div>
 
 </section>
 
-
-<!-- EXPERIENCE -->
+<!-- =========================
+     EXPERIENCE
+========================= -->
 
 <section class="experience" id="experience">
 
-    <div class="section-header reveal">
+    <div class="section-heading reveal">
 
-        <div>
-
-            <div class="eyebrow">
-                More Than A Car
-            </div>
-
-            <h2>
-                The Experience
-            </h2>
-
+        <div class="section-label">
+            MADE FOR MOMENTS
         </div>
 
-    </div>
+        <h2 class="section-title">
+            EVERY OCCASION.<br>
+            ELEVATED.
+        </h2>
 
+    </div>
 
     <div class="experience-grid">
 
         <div class="experience-card reveal">
 
-            <div class="experience-icon">♢</div>
+            <div class="experience-icon">✦</div>
 
             <h3>Weddings</h3>
 
             <p>
-                Arrive in style and make your special day even more memorable.
+                Make your special day even more memorable with a luxury arrival.
             </p>
 
         </div>
-
 
         <div class="experience-card reveal">
 
@@ -1913,33 +1978,31 @@ footer{
             <h3>Photoshoots</h3>
 
             <p>
-                Premium vehicles that add a cinematic touch to your visual story.
+                Premium cars that bring character, elegance and presence to every frame.
             </p>
 
         </div>
 
-
         <div class="experience-card reveal">
 
-            <div class="experience-icon">✦</div>
+            <div class="experience-icon">✧</div>
 
             <h3>Celebrations</h3>
 
             <p>
-                Birthdays, anniversaries and every occasion worth celebrating.
+                Birthdays, anniversaries and milestones deserve something extraordinary.
             </p>
 
         </div>
 
-
         <div class="experience-card reveal">
 
-            <div class="experience-icon">◈</div>
+            <div class="experience-icon">◆</div>
 
             <h3>Special Events</h3>
 
             <p>
-                When ordinary transportation simply isn't enough.
+                Arrive in style for parties, corporate events and unforgettable occasions.
             </p>
 
         </div>
@@ -1948,8 +2011,9 @@ footer{
 
 </section>
 
-
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section class="about" id="about">
 
@@ -1957,48 +2021,50 @@ footer{
 
         <div class="reveal">
 
-            <div class="eyebrow">
-                About UK LUXURY
+            <div class="section-label">
+                ABOUT UK LUXURY
             </div>
 
-            <h2>
-                Luxury,<br>
-                without compromise.
+            <h2 class="section-title">
+                YOUR JOURNEY.<br>
+                OUR PASSION.
             </h2>
 
         </div>
 
+        <div class="about-text reveal">
 
-        <div class="reveal">
-
-            <p class="about-text">
-                UK LUXURY is a premium car rental company based in
-                Garden Reach, Kolkata. We provide luxury vehicles
-                for weddings, photoshoots, celebrations and special
-                occasions across Kolkata.
+            <p>
+                UK LUXURY is a premium car rental service based in Garden Reach, Kolkata,
+                offering a carefully selected collection of luxury, vintage and premium vehicles.
             </p>
 
-            <div class="established">
+            <p>
+                Whether you are looking for a statement car for a wedding,
+                a stunning vehicle for a photoshoot or simply want to travel in comfort and style,
+                our fleet is designed to make the occasion special.
+            </p>
+
+            <div class="about-list">
 
                 <div>
-
-                    <strong>2024</strong>
-
-                    <span>
-                        Established
-                    </span>
-
+                    <span>Established</span>
+                    <span>2024</span>
                 </div>
 
+                <div>
+                    <span>Location</span>
+                    <span>Garden Reach, Kolkata</span>
+                </div>
 
                 <div>
+                    <span>Service Area</span>
+                    <span>Whole Kolkata</span>
+                </div>
 
-                    <strong>Kolkata</strong>
-
-                    <span>
-                        Service Area
-                    </span>
-
+                <div>
+                    <span>Bookings</span>
+                    <span>24 × 7</span>
                 </div>
 
             </div>
@@ -2009,43 +2075,194 @@ footer{
 
 </section>
 
+<!-- =========================
+     REVIEWS
+========================= -->
 
-<!-- CERTIFICATIONS -->
+<section class="reviews" id="reviews">
+
+    <div class="reviews-top reveal">
+
+        <div class="section-heading" style="margin-bottom:0;">
+
+            <div class="section-label">
+                CUSTOMER EXPERIENCES
+            </div>
+
+            <h2 class="section-title">
+                WHAT OUR<br>
+                CLIENTS SAY.
+            </h2>
+
+            <p>
+                Real customer feedback from our Justdial listing.
+            </p>
+
+        </div>
+
+        <div class="justdial-rating">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <strong>5.0 / 5.0</strong>
+
+            <span>
+                Based on 43 Justdial ratings
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="review-grid">
+
+        <div class="review-card reveal">
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+            <div class="review-text">
+                Excellent experience with UK Luxury Car Rental. The vehicle was clean and looked great, while the service was quick and the booking process was easy.
+            </div>
+
+            <div class="reviewer">
+
+                <div class="reviewer-name">
+                    Irfanmolla
+                </div>
+
+                <div class="review-source">
+                    Justdial
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="review-card reveal">
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+            <div class="review-text">
+                A very positive experience with an easy booking process, a clean and safe car, and helpful service throughout the rental.
+            </div>
+
+            <div class="reviewer">
+
+                <div class="reviewer-name">
+                    Arshad
+                </div>
+
+                <div class="review-source">
+                    Justdial
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="review-card reveal">
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+            <div class="review-text">
+                The customer described the service as top-notch, with friendly staff, an easy booking process and a car that was comfortable and in great condition.
+            </div>
+
+            <div class="reviewer">
+
+                <div class="reviewer-name">
+                    SEIKH
+                </div>
+
+                <div class="review-source">
+                    Justdial
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="review-card reveal">
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+            <div class="review-text">
+                A smooth experience with a short wait, friendly service and a clean car. The customer said everything felt easy, quick and enjoyable.
+            </div>
+
+            <div class="reviewer">
+
+                <div class="reviewer-name">
+                    User
+                </div>
+
+                <div class="review-source">
+                    Justdial
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="reviews-button reveal">
+
+        <a href="https://jsdl.in/DT-37SPMP52LKW"
+           class="justdial-btn"
+           target="_blank"
+           rel="noopener">
+
+            ★ View All Reviews on Justdial
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     CERTIFICATIONS
+========================= -->
 
 <section class="certifications">
 
-    <div class="certification-inner reveal">
+    <div class="section-heading reveal">
 
-        <div class="eyebrow">
-            Verified Business
+        <div class="section-label">
+            TRUST & RECOGNITION
         </div>
 
-        <h2>
-            Trusted by Customers
+        <h2 class="section-title">
+            CERTIFIED.<br>
+            TRUSTED.
         </h2>
 
-        <div class="certification-grid">
+    </div>
 
+    <div class="cert-grid">
 
-            <div class="certification-card">
+        <div class="cert-card reveal">
 
-                <img
-                    src="users choice.jpg"
-                    alt="Just Dial Certified Users Choice"
-                >
+            <img src="users choice.jpg"
+                 alt="Just Dial Certified Users Choice">
 
-            </div>
+        </div>
 
+        <div class="cert-card reveal">
 
-            <div class="certification-card">
-
-                <img
-                    src="trust.jpg"
-                    alt="Just Dial Certified Trusted Business"
-                >
-
-            </div>
-
+            <img src="trust.jpg"
+                 alt="Just Dial Certified Trusted Business">
 
         </div>
 
@@ -2053,22 +2270,19 @@ footer{
 
 </section>
 
-
-<!-- POLICY -->
+<!-- =========================
+     POLICY
+========================= -->
 
 <section class="policy">
 
-    <div class="policy-inner reveal">
+    <div class="policy-box reveal">
 
-        <div class="eyebrow">
-            Simple & Transparent
+        <div class="section-label">
+            RENTAL POLICY
         </div>
 
-        <h2>
-            Our Rental Policy
-        </h2>
-
-        <div class="policy-big">
+        <div class="policy-main">
             10 HOURS OR 100 KM
         </div>
 
@@ -2080,235 +2294,169 @@ footer{
 
 </section>
 
+<!-- =========================
+     CTA
+========================= -->
 
-<!-- BOOKING CTA -->
-
-<section class="booking">
+<section class="cta">
 
     <div class="reveal">
 
-        <div class="eyebrow">
-            Your Moment. Your Car.
+        <div class="section-label">
+            YOUR NEXT JOURNEY STARTS HERE
         </div>
 
         <h2>
-            Make it unforgettable.
+            ARRIVE<br>
+            DIFFERENT.
         </h2>
 
         <p>
-            Ready to arrive in luxury?
-            Contact UK LUXURY and reserve your vehicle.
+            Tell us where you're going, what you're celebrating,
+            or simply which car caught your eye.
         </p>
 
-        <div class="booking-buttons">
+        <a href="https://wa.me/919674518240"
+           class="btn btn-gold"
+           target="_blank">
 
-            <a href="tel:+919674518240" class="btn btn-gold">
-                Call & Book
-            </a>
+            Book Your Car
 
-            <a href="https://wa.me/919674518240" target="_blank" class="btn">
-                WhatsApp
-            </a>
-
-        </div>
+        </a>
 
     </div>
 
 </section>
 
-
-<!-- CONTACT -->
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section class="contact" id="contact">
 
-    <div class="contact-inner">
+    <div class="section-heading reveal">
 
-        <div class="contact-header reveal">
-
-            <div class="eyebrow">
-                Get In Touch
-            </div>
-
-            <h2>
-                Contact Us
-            </h2>
-
-            <p>
-                Available 24×7 for bookings and enquiries across Kolkata.
-            </p>
-
+        <div class="section-label">
+            CONTACT UK LUXURY
         </div>
 
+        <h2 class="section-title">
+            LET'S MAKE<br>
+            IT SPECIAL.
+        </h2>
 
-        <div class="contact-grid">
+    </div>
 
+    <div class="contact-grid">
 
-            <!-- CONTACT DETAILS -->
+        <div class="reveal">
 
-            <div class="contact-info reveal">
+            <div class="contact-items">
 
+                <div class="contact-card">
 
-                <div class="contact-item">
+                    <span>Call</span>
 
-                    <div class="contact-label">
-                        Call / Book
-                    </div>
-
-                    <div class="contact-value">
-
+                    <strong>
                         <a href="tel:+919674518240">
                             +91 96745 18240
                         </a>
-
-                    </div>
+                    </strong>
 
                 </div>
 
+                <div class="contact-card">
 
-                <div class="contact-item">
+                    <span>WhatsApp</span>
 
-                    <div class="contact-label">
-                        WhatsApp
-                    </div>
-
-                    <div class="contact-value">
-
+                    <strong>
                         <a href="https://wa.me/919674518240" target="_blank">
-                            +91 96745 18240
+                            Chat With Us
                         </a>
-
-                    </div>
+                    </strong>
 
                 </div>
 
+                <div class="contact-card">
 
-                <!-- EMAIL -->
+                    <span>Email</span>
 
-                <div class="contact-item">
-
-                    <div class="contact-label">
-                        Email
-                    </div>
-
-                    <div class="contact-value">
-
+                    <strong>
                         <a href="mailto:ukluxury857@gmail.com">
                             ukluxury857@gmail.com
                         </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <div class="contact-label">
-                        Location
-                    </div>
-
-                    <div class="contact-value">
-
-                        <a href="https://maps.app.goo.gl/fMaxK5V1Dnd8Ee859" target="_blank">
-                            📍 Garden Reach, Kolkata
-                        </a>
-
-                    </div>
+                    </strong>
 
                 </div>
 
+                <div class="contact-card">
 
-                <div class="contact-item">
+                    <span>Location</span>
 
-                    <div class="contact-label">
-                        Service Area
-                    </div>
+                    <strong>
+                        Garden Reach, Kolkata
+                    </strong>
 
-                    <div class="contact-value">
+                </div>
+
+                <div class="contact-card">
+
+                    <span>Service Area</span>
+
+                    <strong>
                         Whole Kolkata
-                    </div>
+                    </strong>
 
                 </div>
 
+                <div class="contact-card">
 
-                <div class="contact-item">
+                    <span>Business Hours</span>
 
-                    <div class="contact-label">
-                        Business Hours
-                    </div>
-
-                    <div class="contact-value">
-                        24 × 7
-                    </div>
-
-                </div>
-
-
-                <!-- SOCIAL BUTTONS -->
-
-                <div class="social-buttons">
-
-
-                    <!-- INSTAGRAM -->
-
-                    <a
-                        href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw"
-                        target="_blank"
-                        class="social-btn instagram-btn"
-                    >
-
-                        <svg viewBox="0 0 24 24">
-                            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
-                        </svg>
-
-                        Instagram
-
-                    </a>
-
-
-                    <!-- WHATSAPP -->
-
-                    <a
-                        href="https://wa.me/919674518240"
-                        target="_blank"
-                        class="social-btn whatsapp-btn"
-                    >
-
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20.5 3.5A11.9 11.9 0 0 0 12.05 0C5.47 0 .12 5.35.12 11.93c0 2.1.55 4.15 1.6 5.96L.02 24l6.25-1.64a11.9 11.9 0 0 0 5.77 1.47h.01c6.57 0 11.92-5.35 11.92-11.93 0-3.19-1.24-6.19-3.47-8.4zM12.05 21.8h-.01a9.86 9.86 0 0 1-5.02-1.37l-.36-.21-3.71.98.99-3.61-.23-.37a9.88 9.88 0 0 1-1.52-5.29C2.19 6.48 6.61 2.07 12.06 2.07c2.64 0 5.12 1.03 6.98 2.9a9.83 9.83 0 0 1 2.89 6.98c-.01 5.44-4.44 9.85-9.88 9.85zm5.41-7.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.78-1.47-1.74-1.64-2.04-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.09 4.49.71.31 1.26.49 1.69.63.71.23 1.35.2 1.86.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/>
-                        </svg>
-
-                        WhatsApp
-
-                    </a>
-
+                    <strong>
+                        24 × 7 Bookings & Enquiries
+                    </strong>
 
                 </div>
 
             </div>
 
+            <div class="contact-socials">
 
-            <!-- MAP -->
+                <a href="https://www.instagram.com/uk_luxury_car_rental_kolkata?stkn=OXFzdWduYmp2aGMw"
+                   target="_blank"
+                   class="social-btn">
 
-            <div class="map-wrapper reveal">
+                    Instagram
 
-                <iframe
-                    src="https://www.google.com/maps?q=Garden%20Reach%2C%20Kolkata&output=embed"
-                    loading="lazy"
-                    allowfullscreen
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                </a>
 
-                <a
-                    href="https://maps.app.goo.gl/fMaxK5V1Dnd8Ee859"
-                    target="_blank"
-                    class="map-link"
-                >
-                    Open Location in Google Maps
+                <a href="https://wa.me/919674518240"
+                   target="_blank"
+                   class="social-btn">
+
+                    WhatsApp
+
+                </a>
+
+                <a href="https://jsdl.in/DT-37SPMP52LKW"
+                   target="_blank"
+                   class="social-btn">
+
+                    Justdial
+
                 </a>
 
             </div>
 
+        </div>
+
+        <div class="map reveal">
+
+            <iframe
+                src="https://www.google.com/maps?q=Garden%20Reach%2C%20Kolkata&output=embed"
+                loading="lazy">
+            </iframe>
 
         </div>
 
@@ -2316,63 +2464,92 @@ footer{
 
 </section>
 
-
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
     <div class="footer-inner">
 
-        <div class="footer-logo">
+        <div class="footer-brand">
 
             <img src="logo.jpg" alt="UK LUXURY Logo">
 
-            <div class="footer-logo-text">
-                UK LUXURY
+            <div class="footer-brand-text">
+
+                <div class="footer-name">
+                    UK LUXURY
+                </div>
+
+                <div class="footer-sub">
+                    CAR RENTAL
+                </div>
+
             </div>
 
         </div>
 
         <div class="footer-copy">
-            © 2024 UK LUXURY · GARDEN REACH · KOLKATA
+            © 2026 UK LUXURY. All Rights Reserved.
         </div>
 
     </div>
 
 </footer>
 
+<!-- =========================
+     CURSOR
+========================= -->
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
-/* LOADER */
+/* =========================
+   LOADER
+========================= */
 
 window.addEventListener("load", function(){
 
     setTimeout(function(){
 
-        document.getElementById("loader").classList.add("hide");
+        document.querySelector(".loader").classList.add("hide");
 
     },1200);
 
 });
 
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 
-window.addEventListener("scroll", function(){
+const navbar = document.getElementById("navbar");
 
-    const navbar = document.getElementById("navbar");
+window.addEventListener("scroll",function(){
 
     if(window.scrollY > 40){
+
         navbar.classList.add("scrolled");
+
     }else{
+
         navbar.classList.remove("scrolled");
+
     }
 
 });
 
 
-/* MOBILE MENU */
+/* =========================
+   MOBILE MENU
+========================= */
 
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
@@ -2382,7 +2559,6 @@ menuBtn.addEventListener("click",function(){
     navLinks.classList.toggle("active");
 
 });
-
 
 document.querySelectorAll(".nav-links a").forEach(function(link){
 
@@ -2395,11 +2571,11 @@ document.querySelectorAll(".nav-links a").forEach(function(link){
 });
 
 
-/* SCROLL REVEAL */
+/* =========================
+   SCROLL REVEAL
+========================= */
 
-const revealElements = document.querySelectorAll(".reveal");
-
-const revealObserver = new IntersectionObserver(function(entries){
+const observer = new IntersectionObserver(function(entries){
 
     entries.forEach(function(entry){
 
@@ -2412,78 +2588,71 @@ const revealObserver = new IntersectionObserver(function(entries){
     });
 
 },{
-    threshold:0.12
+    threshold:.12
+});
+
+document.querySelectorAll(".reveal").forEach(function(element){
+
+    observer.observe(element);
+
 });
 
 
-revealElements.forEach(function(element){
-
-    revealObserver.observe(element);
-
-});
-
-
-/* HERO PARALLAX */
+/* =========================
+   HERO PARALLAX
+========================= */
 
 window.addEventListener("scroll",function(){
 
-    const heroBg = document.getElementById("heroBg");
+    const heroContent = document.querySelector(".hero-content");
 
-    if(heroBg){
+    if(heroContent){
 
-        const movement = window.scrollY * 0.18;
+        const scroll = window.scrollY;
 
-        heroBg.style.transform =
-            "scale(1.05) translateY(" + movement + "px)";
+        if(scroll < window.innerHeight){
+
+            heroContent.style.transform =
+                "translateY(" + (scroll * .12) + "px)";
+
+        }
 
     }
 
 });
 
 
-/* CUSTOM CURSOR */
+/* =========================
+   CUSTOM CURSOR
+========================= */
 
-const cursor = document.getElementById("cursor");
-const cursorRing = document.getElementById("cursorRing");
+const cursor = document.querySelector(".cursor");
+const cursorRing = document.querySelector(".cursor-ring");
 
 document.addEventListener("mousemove",function(e){
 
-    if(cursor && cursorRing){
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
 
-        cursor.style.left = e.clientX + "px";
-        cursor.style.top = e.clientY + "px";
-
-        cursorRing.style.left = e.clientX + "px";
-        cursorRing.style.top = e.clientY + "px";
-
-    }
+    cursorRing.style.left = e.clientX + "px";
+    cursorRing.style.top = e.clientY + "px";
 
 });
 
 
-/* CURSOR HOVER */
-
-document.querySelectorAll("a,button").forEach(function(element){
+document.querySelectorAll("a, .car-card, .experience-card, .review-card").forEach(function(element){
 
     element.addEventListener("mouseenter",function(){
 
-        if(cursorRing){
-
-            cursorRing.style.transform =
-                "translate(-50%,-50%) scale(1.5)";
-
-        }
+        cursorRing.style.width = "48px";
+        cursorRing.style.height = "48px";
 
     });
 
     element.addEventListener("mouseleave",function(){
 
-        if(cursorRing){
-
-            cursorRing.style.transform =
-                "translate(-50%,-50%) scale(1)";
-
-        }
+        cursorRing.style.width = "32px";
+        cursorRing.style.height = "32px";
 
     });
 
@@ -2493,4 +2662,3 @@ document.querySelectorAll("a,button").forEach(function(element){
 
 </body>
 </html>
-```
